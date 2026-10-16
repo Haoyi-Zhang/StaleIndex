@@ -95,6 +95,21 @@ Resets happen immediately before arrivals; sends follow arrivals and queries. Ca
 
 Rolling budgets count optional erasures globally, not unavailable-node fractions. Mandatory resets are explicit and uncharged. Hardness uses a mandatory reset profile; the polynomial cut result assumes singleton arrivals and unit per-event costs. Direct packing assumes complete per-slot reset eligibility, no mandatory resets, and simultaneous replica queries. Sparse eligibility, packet loss, downtime, adaptive sends, incomplete advertisements, authentication, arbitrary membership, and Internet performance are outside those formulas.
 
+## Optional manuscript figures
+
+Scientific execution remains standard-library-only. To regenerate all four
+font-embedded vector figures from the retained results, use:
+
+```bash
+python3 -m pip install -r requirements-figures.txt
+python3 -B figures/draw_figures.py
+python3 -B figures/check_figures.py
+```
+
+In a full project checkout, `paper/build.sh` sends these outputs to
+`paper/figures` before compilation. Rendering invokes no TeX and changes no
+scientific measurements.
+
 ## Sources and license
 
 Inputs are original synthetic instances; no outside dataset is required. Source identities/read scopes are retained in `external_resources.csv`, `bibliography-audit.csv`, `bibliography-audit.md`, and `literature-boundary.md`. Scholarly PDFs are not redistributed. `LICENSE` and `licenses/NOTICE.md` retain permissions, attribution, and tool-use disclosure.

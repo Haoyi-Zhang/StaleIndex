@@ -42,6 +42,10 @@ jobs:
             python -B validate.py --out "$RUNNER_TEMP/p068-science/results"
             python -B -c "import json, os, pathlib; p = pathlib.Path(os.environ[\"RUNNER_TEMP\"]) / \"p068-science/results/summary.json\"; s = json.loads(p.read_text()); assert s[\"all_checks_passed\"] is True; assert s[\"unique_unit_tests\"] >= 93; assert s[\"campaign_deterministic_equal\"] is True; assert s[\"epoch_scientific_equal\"] is True"
           ' 2>&1 | tee "$RUNNER_TEMP/p068-science/console.log"
+      - name: Verify consumed Python vector figures
+        run: |
+          python -B -m pip install --disable-pip-version-check -r requirements-figures.txt
+          python -B figures/check_figures.py
       - name: Preserve raw outputs even on failure
         if: ${{ always() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
