@@ -112,4 +112,4 @@ scientific measurements.
 
 ## Sources and license
 
-Inputs are original synthetic instances; no outside dataset is required. Source identities/read scopes are retained in `external_resources.csv`, `bibliography-audit.csv`, `bibliography-audit.md`, and `literature-boundary.md`. Scholarly PDFs are not redistributed. `LICENSE` and `licenses/NOTICE.md` retain permissions, attribution, and tool-use disclosure.
+Inputs are original synthetic instances; no outside dataset is required. Source identities/read scopes are retained in `external_resources.csv`, `bibliography-audit.csv`, `bibliography-audit.md`, and `literature-boundary.md`. Scholarly PDFs are not redistributed. `LICENSE` and `licenses/NOTICE.md` retain permissions and attribution.
