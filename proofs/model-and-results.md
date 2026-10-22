@@ -37,7 +37,17 @@ Necessity of the implications: By the common endpoint reduction in §2, any fail
 
 Sufficiency of failure: Suppose the closure misses every fresh origin state. For every message whose send point is unmarked, at least one permitted head is unmarked; choose such a head. For messages with a marked send point choose any permitted head. This specifies one simultaneous arrival assignment, not different assignments for different queries or paths. Forward induction shows that no marked point becomes fresh. Fresh origin injections are unmarked. If an intact memory edge entered a marked point from an unmarked predecessor, the predecessor rule would have marked it. If a packet from an unmarked send point entered a marked point, it would contradict the selected unmarked head. Packets from marked sends carry stale payloads. A reset injects -1. All queries remain stale, establishing a legal failed execution.
 
-The expanded implementation takes O(nH + sum_m (b_m-a_m+1)) space and work using counters. This generic Horn worklist is not claimed as a new algorithmic primitive.
+A counter-worklist implementation of the expanded Horn system would take
+O(nH + sum_m (b_m-a_m+1)) space and work; this generic propagation method is
+not a new algorithmic primitive. The supplied `bsci/oracle.py:expanded_closure`
+is instead a naive full-state scan oracle for bounded correctness checks, not
+that counter implementation. Each sweep scans nH memory positions and the
+message premises until a fixed point is reached. Even with two nodes and no
+messages, a query at time H can require H+1 sweeps, hence Theta(H^2) work.
+It must not be assigned the hypothetical counter-worklist running time. The
+compressed producer's range-worklist bound below concerns its actual separate
+implementation; the retained scaling measurements compare that producer with
+its positive verifier, not with an optimized expanded baseline.
 
 ## 4. Range-AND certificates
 
